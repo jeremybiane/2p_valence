@@ -11,4 +11,4 @@ Many notebooks call other notebooks, and all rely on variables defined in 'prepr
 *behavior_codes* = behavior file (arduino output containing timestamps of when behavioral (licks) and sensory (odor, sucrose deliveries) events occured  
 *tseries.xml* = imaging file with timestamps of images  
    
-The *Avg6x...* folder containes ROI outlines and extracted traces for your reference
+991 is a complete dataset. 91 is lacking all notebooks, and CellReg data isn't in proper format for NBs to read
