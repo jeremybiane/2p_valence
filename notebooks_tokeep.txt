@@ -1,0 +1,6 @@
+results/mouse/day1/sucroseAndShock/notebooks/preprocessing_SucroseAndShock
+results/mouse/day2/sucroseAndShock/notebooks/preprocessing_SucroseAndShock
+results/mouse/day1/sucroseAndShock/notebooks/selectivity_SucroseAndShock
+results/mouse/day2/sucroseAndShock/notebooks/selectivity_SucroseAndShock
+results/mouse/notebooks/tuning_stability_values
+results/notebooks/overlaps_d1d2
