@@ -1,6 +1,8 @@
 # 2p_valence
  
-Many notebooks call other notebooks, and all rely on variables defined in 'preprocessing' notebook  
+Many notebooks call other notebooks, and all rely on variables defined in 'preprocessing' notebook
+
+*JSB is currenlty working on a generalized preprocessing notebook that can be used for any of the datasets (eg, whether odor and sucrose/shock presentations were collected in separate or same session)*
    
 *C.txt* = denoised trace (the red trace)  
 *C_raw.txt* = raw trace (the blue trace)  
