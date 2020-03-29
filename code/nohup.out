@@ -1,0 +1,798 @@
+[NbConvertApp] WARNING | pattern u'dhpc4/10062017/notebooks/rates.ipynb' matched no files
+This application is used to convert notebook files (*.ipynb) to various other
+formats.
+
+WARNING: THE COMMANDLINE INTERFACE MAY CHANGE IN FUTURE RELEASES.
+
+Options
+-------
+
+Arguments that take values are actually convenience aliases to full
+Configurables, whose aliases are listed on the help line. For more information
+on full configurables, see '--help-all'.
+
+--execute
+    Execute the notebook prior to export.
+--allow-errors
+    Continue notebook execution even if one of the cells throws an error and include the error message in the cell output (the default behaviour is to abort conversion). This flag is only relevant if '--execute' was specified, too.
+--stdout
+    Write notebook output to stdout instead of files.
+--stdin
+    read a single notebook file from stdin. Write the resulting notebook with default basename 'notebook.*'
+--inplace
+    Run nbconvert in place, overwriting the existing notebook (only 
+    relevant when converting to notebook format)
+-y
+    Answer yes to any questions instead of prompting.
+--debug
+    set log level to logging.DEBUG (maximize logging output)
+--generate-config
+    generate default config file
+--nbformat=<Enum> (NotebookExporter.nbformat_version)
+    Default: 4
+    Choices: [1, 2, 3, 4]
+    The nbformat version to write. Use this to downgrade notebooks.
+--output-dir=<Unicode> (FilesWriter.build_directory)
+    Default: ''
+    Directory to write output to.  Leave blank to output to the current
+    directory
+--writer=<DottedObjectName> (NbConvertApp.writer_class)
+    Default: 'FilesWriter'
+    Writer class used to write the  results of the conversion
+--log-level=<Enum> (Application.log_level)
+    Default: 30
+    Choices: (0, 10, 20, 30, 40, 50, 'DEBUG', 'INFO', 'WARN', 'ERROR', 'CRITICAL')
+    Set the log level by value or name.
+--reveal-prefix=<Unicode> (SlidesExporter.reveal_url_prefix)
+    Default: u''
+    The URL prefix for reveal.js. This can be a a relative URL for a local copy
+    of reveal.js, or point to a CDN.
+    For speaker notes to work, a local reveal.js prefix must be used.
+--to=<Unicode> (NbConvertApp.export_format)
+    Default: 'html'
+    The export format to be used, either one of the built-in formats, or a
+    dotted object name that represents the import path for an `Exporter` class
+--template=<Unicode> (TemplateExporter.template_file)
+    Default: u''
+    Name of the template file to use
+--output=<Unicode> (NbConvertApp.output_base)
+    Default: ''
+    overwrite base name use for output files. can only be used when converting
+    one notebook at a time.
+--post=<DottedOrNone> (NbConvertApp.postprocessor_class)
+    Default: u''
+    PostProcessor class used to write the results of the conversion
+--config=<Unicode> (JupyterApp.config_file)
+    Default: u''
+    Full path of a config file.
+
+To see all available configurables, use `--help-all`
+
+Examples
+--------
+
+    The simplest way to use nbconvert is
+    
+    > jupyter nbconvert mynotebook.ipynb
+    
+    which will convert mynotebook.ipynb to the default format (probably HTML).
+    
+    You can specify the export format with `--to`.
+    Options include ['custom', 'html', 'latex', 'markdown', 'notebook', 'pdf', 'python', 'rst', 'script', 'slides', 'html_ch', 'html_embed', 'html_toc', 'html_with_lenvs', 'html_with_toclenvs', 'latex_with_lenvs', 'selectLanguage']
+    
+    > jupyter nbconvert --to latex mynotebook.ipynb
+    
+    Both HTML and LaTeX support multiple output templates. LaTeX includes
+    'base', 'article' and 'report'.  HTML includes 'basic' and 'full'. You
+    can specify the flavor of the format used.
+    
+    > jupyter nbconvert --to html --template basic mynotebook.ipynb
+    
+    You can also pipe the output to stdout, rather than a file
+    
+    > jupyter nbconvert mynotebook.ipynb --stdout
+    
+    PDF is generated via latex
+    
+    > jupyter nbconvert mynotebook.ipynb --to pdf
+    
+    You can get (and serve) a Reveal.js-powered slideshow
+    
+    > jupyter nbconvert myslides.ipynb --to slides --post serve
+    
+    Multiple notebooks can be given at the command line in a couple of 
+    different ways:
+    
+    > jupyter nbconvert notebook*.ipynb
+    > jupyter nbconvert notebook1.ipynb notebook2.ipynb
+    
+    or you can specify the notebooks list in a config file, containing::
+    
+        c.NbConvertApp.notebooks = ["my_notebook.ipynb"]
+    
+    > jupyter nbconvert --config mycfg.py
+
+[NbConvertApp] Converting notebook ../results/dhpc4/10062017/notebooks/rates.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] ERROR | Error while converting '../results/dhpc4/10062017/notebooks/rates.ipynb'
+Traceback (most recent call last):
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/nbconvertapp.py", line 357, in export_single_notebook
+    output, resources = self.exporter.from_filename(notebook_filename, resources=resources)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/exporters/exporter.py", line 165, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/exporters/exporter.py", line 183, in from_file
+    return self.from_notebook_node(nbformat.read(file_stream, as_version=4), resources=resources, **kw)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/exporters/notebook.py", line 26, in from_notebook_node
+    nb_copy, resources = super(NotebookExporter, self).from_notebook_node(nb, resources, **kw)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/exporters/exporter.py", line 130, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/exporters/exporter.py", line 302, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/preprocessors/base.py", line 47, in __call__
+    return self.preprocess(nb,resources)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/preprocessors/execute.py", line 145, in preprocess
+    nb, resources = super(ExecutePreprocessor, self).preprocess(nb, resources)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/preprocessors/base.py", line 70, in preprocess
+    nb.cells[index], resources = self.preprocess_cell(cell, resources, index)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/preprocessors/execute.py", line 176, in preprocess_cell
+    raise CellExecutionError(msg)
+CellExecutionError: An error occurred while executing the following cell:
+------------------
+fig, ax = pl.subplots(1, 1, figsize=(3, 2))
+pt.nicer_plot(ax)
+ax.hist(patterns_deltas, bins=50, histtype='step');
+------------------
+
+ValueError: max must be larger than min in range parameter.
+
+[NbConvertApp] Converting notebook ../results/dhpc4/10062017/notebooks/rates.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] ERROR | Error while converting '../results/dhpc4/10062017/notebooks/rates.ipynb'
+Traceback (most recent call last):
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/nbconvertapp.py", line 357, in export_single_notebook
+    output, resources = self.exporter.from_filename(notebook_filename, resources=resources)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/exporters/exporter.py", line 165, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/exporters/exporter.py", line 183, in from_file
+    return self.from_notebook_node(nbformat.read(file_stream, as_version=4), resources=resources, **kw)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/exporters/notebook.py", line 26, in from_notebook_node
+    nb_copy, resources = super(NotebookExporter, self).from_notebook_node(nb, resources, **kw)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/exporters/exporter.py", line 130, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/exporters/exporter.py", line 302, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/preprocessors/base.py", line 47, in __call__
+    return self.preprocess(nb,resources)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/preprocessors/execute.py", line 145, in preprocess
+    nb, resources = super(ExecutePreprocessor, self).preprocess(nb, resources)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/preprocessors/base.py", line 70, in preprocess
+    nb.cells[index], resources = self.preprocess_cell(cell, resources, index)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/preprocessors/execute.py", line 176, in preprocess_cell
+    raise CellExecutionError(msg)
+CellExecutionError: An error occurred while executing the following cell:
+------------------
+fig, ax = pl.subplots(1, 1, figsize=(3, 2))
+pt.nicer_plot(ax)
+ax.hist(patterns_deltas, bins=50, histtype='step');
+------------------
+
+ValueError: max must be larger than min in range parameter.
+
+[NbConvertApp] Converting notebook ../results/dhpc4/09262017/notebooks/rates.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Writing 27271 bytes to ../results/dhpc4/09262017/notebooks/rates.ipynb
+[NbConvertApp] Converting notebook ../results/52/notebooks/rates_early_vs_late.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Writing 202824 bytes to ../results/52/notebooks/rates_early_vs_late.ipynb
+[NbConvertApp] Converting notebook ../results/52/10062017/notebooks/rates.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/52/09262017/notebooks/rates.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/52/09212017/notebooks/rates.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/52/09272017/notebooks/rates.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/52/10042017/notebooks/rates.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/52/10052017/notebooks/rates.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Writing 43581 bytes to ../results/52/10052017/notebooks/rates.ipynb
+[NbConvertApp] Writing 45507 bytes to ../results/52/09262017/notebooks/rates.ipynb
+[NbConvertApp] Writing 48105 bytes to ../results/52/09212017/notebooks/rates.ipynb
+[NbConvertApp] Writing 44879 bytes to ../results/52/10042017/notebooks/rates.ipynb
+[NbConvertApp] Writing 43565 bytes to ../results/52/09272017/notebooks/rates.ipynb
+[NbConvertApp] Writing 48605 bytes to ../results/52/10062017/notebooks/rates.ipynb
+[NbConvertApp] Converting notebook ../results/54/09212017/notebooks/rates.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/54/10022017/notebooks/rates.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/54/09262017/notebooks/rates.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/54/09222017/notebooks/rates.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/54/10042017/notebooks/rates.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/54/10032017/notebooks/rates.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Writing 45801 bytes to ../results/54/09212017/notebooks/rates.ipynb
+[NbConvertApp] Writing 46007 bytes to ../results/54/09222017/notebooks/rates.ipynb
+[NbConvertApp] Writing 47731 bytes to ../results/54/10042017/notebooks/rates.ipynb
+[NbConvertApp] Writing 43175 bytes to ../results/54/09262017/notebooks/rates.ipynb
+[NbConvertApp] Writing 44471 bytes to ../results/54/10022017/notebooks/rates.ipynb
+[NbConvertApp] Writing 46893 bytes to ../results/54/10032017/notebooks/rates.ipynb
+[NbConvertApp] Converting notebook ../results/dhpc4/09262017/notebooks/rates.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/dhpc4/10062017/notebooks/rates.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Writing 50039 bytes to ../results/dhpc4/09262017/notebooks/rates.ipynb
+[NbConvertApp] Writing 58078 bytes to ../results/dhpc4/10062017/notebooks/rates.ipynb
+[NbConvertApp] WARNING | pattern u'../results/54//notebooks/rates' matched no files
+[NbConvertApp] WARNING | pattern u'../results/52//notebooks/rates' matched no files
+This application is used to convert notebook files (*.ipynb) to various other
+formats.
+
+WARNING: THE COMMANDLINE INTERFACE MAY CHANGE IN FUTURE RELEASES.
+
+Options
+-------
+
+Arguments that take values are actually convenience aliases to full
+Configurables, whose aliases are listed on the help line. For more information
+on full configurables, see '--help-all'.
+
+--execute
+    Execute the notebook prior to export.
+--allow-errors
+    Continue notebook execution even if one of the cells throws an error and include the error message in the cell output (the default behaviour is to abort conversion). This flag is only relevant if '--execute' was specified, too.
+--stdout
+    Write notebook output to stdout instead of files.
+--stdin
+    read a single notebook file from stdin. Write the resulting notebook with default basename 'notebook.*'
+--inplace
+    Run nbconvert in place, overwriting the existing notebook (only 
+    relevant when converting to notebook format)
+-y
+    Answer yes to any questions instead of prompting.
+--debug
+    set log level to logging.DEBUG (maximize logging output)
+--generate-config
+    generate default config file
+--nbformat=<Enum> (NotebookExporter.nbformat_version)
+    Default: 4
+    Choices: [1, 2, 3, 4]
+    The nbformat version to write. Use this to downgrade notebooks.
+--output-dir=<Unicode> (FilesWriter.build_directory)
+    Default: ''
+    Directory to write output to.  Leave blank to output to the current
+    directory
+--writer=<DottedObjectName> (NbConvertApp.writer_class)
+    Default: 'FilesWriter'
+    Writer class used to write the  results of the conversion
+--log-level=<Enum> (Application.log_level)
+    Default: 30
+    Choices: (0, 10, 20, 30, 40, 50, 'DEBUG', 'INFO', 'WARN', 'ERROR', 'CRITICAL')
+    Set the log level by value or name.
+--reveal-prefix=<Unicode> (SlidesExporter.reveal_url_prefix)
+    Default: u''
+    The URL prefix for reveal.js. This can be a a relative URL for a local copy
+    of reveal.js, or point to a CDN.
+    For speaker notes to work, a local reveal.js prefix must be used.
+--to=<Unicode> (NbConvertApp.export_format)
+    Default: 'html'
+    The export format to be used, either one of the built-in formats, or a
+    dotted object name that represents the import path for an `Exporter` class
+--template=<Unicode> (TemplateExporter.template_file)
+    Default: u''
+    Name of the template file to use
+--output=<Unicode> (NbConvertApp.output_base)
+    Default: ''
+    overwrite base name use for output files. can only be used when converting
+    one notebook at a time.
+--post=<DottedOrNone> (NbConvertApp.postprocessor_class)
+    Default: u''
+    PostProcessor class used to write the results of the conversion
+--config=<Unicode> (JupyterApp.config_file)
+    Default: u''
+    Full path of a config file.
+
+To see all available configurables, use `--help-all`
+
+Examples
+--------
+
+    The simplest way to use nbconvert is
+    
+    > jupyter nbconvert mynotebook.ipynb
+    
+    which will convert mynotebook.ipynb to the default format (probably HTML).
+    
+    You can specify the export format with `--to`.
+    Options include ['custom', 'html', 'latex', 'markdown', 'notebook', 'pdf', 'python', 'rst', 'script', 'slides', 'html_ch', 'html_embed', 'html_toc', 'html_with_lenvs', 'html_with_toclenvs', 'latex_with_lenvs', 'selectLanguage']
+    
+    > jupyter nbconvert --to latex mynotebook.ipynb
+    
+    Both HTML and LaTeX support multiple output templates. LaTeX includes
+    'base', 'article' and 'report'.  HTML includes 'basic' and 'full'. You
+    can specify the flavor of the format used.
+    
+    > jupyter nbconvert --to html --template basic mynotebook.ipynb
+    
+    You can also pipe the output to stdout, rather than a file
+    
+    > jupyter nbconvert mynotebook.ipynb --stdout
+    
+    PDF is generated via latex
+    
+    > jupyter nbconvert mynotebook.ipynb --to pdf
+    
+    You can get (and serve) a Reveal.js-powered slideshow
+    
+    > jupyter nbconvert myslides.ipynb --to slides --post serve
+    
+    Multiple notebooks can be given at the command line in a couple of 
+    different ways:
+    
+    > jupyter nbconvert notebook*.ipynb
+    > jupyter nbconvert notebook1.ipynb notebook2.ipynb
+    
+    or you can specify the notebooks list in a config file, containing::
+    
+        c.NbConvertApp.notebooks = ["my_notebook.ipynb"]
+    
+    > jupyter nbconvert --config mycfg.py
+
+This application is used to convert notebook files (*.ipynb) to various other
+formats.
+
+WARNING: THE COMMANDLINE INTERFACE MAY CHANGE IN FUTURE RELEASES.
+
+Options
+-------
+
+Arguments that take values are actually convenience aliases to full
+Configurables, whose aliases are listed on the help line. For more information
+on full configurables, see '--help-all'.
+
+--execute
+    Execute the notebook prior to export.
+--allow-errors
+    Continue notebook execution even if one of the cells throws an error and include the error message in the cell output (the default behaviour is to abort conversion). This flag is only relevant if '--execute' was specified, too.
+--stdout
+    Write notebook output to stdout instead of files.
+--stdin
+    read a single notebook file from stdin. Write the resulting notebook with default basename 'notebook.*'
+--inplace
+    Run nbconvert in place, overwriting the existing notebook (only 
+    relevant when converting to notebook format)
+-y
+    Answer yes to any questions instead of prompting.
+--debug
+    set log level to logging.DEBUG (maximize logging output)
+--generate-config
+    generate default config file
+--nbformat=<Enum> (NotebookExporter.nbformat_version)
+    Default: 4
+    Choices: [1, 2, 3, 4]
+    The nbformat version to write. Use this to downgrade notebooks.
+--output-dir=<Unicode> (FilesWriter.build_directory)
+    Default: ''
+    Directory to write output to.  Leave blank to output to the current
+    directory
+--writer=<DottedObjectName> (NbConvertApp.writer_class)
+    Default: 'FilesWriter'
+    Writer class used to write the  results of the conversion
+--log-level=<Enum> (Application.log_level)
+    Default: 30
+    Choices: (0, 10, 20, 30, 40, 50, 'DEBUG', 'INFO', 'WARN', 'ERROR', 'CRITICAL')
+    Set the log level by value or name.
+--reveal-prefix=<Unicode> (SlidesExporter.reveal_url_prefix)
+    Default: u''
+    The URL prefix for reveal.js. This can be a a relative URL for a local copy
+    of reveal.js, or point to a CDN.
+    For speaker notes to work, a local reveal.js prefix must be used.
+--to=<Unicode> (NbConvertApp.export_format)
+    Default: 'html'
+    The export format to be used, either one of the built-in formats, or a
+    dotted object name that represents the import path for an `Exporter` class
+--template=<Unicode> (TemplateExporter.template_file)
+    Default: u''
+    Name of the template file to use
+--output=<Unicode> (NbConvertApp.output_base)
+    Default: ''
+    overwrite base name use for output files. can only be used when converting
+    one notebook at a time.
+--post=<DottedOrNone> (NbConvertApp.postprocessor_class)
+    Default: u''
+    PostProcessor class used to write the results of the conversion
+--config=<Unicode> (JupyterApp.config_file)
+    Default: u''
+    Full path of a config file.
+
+To see all available configurables, use `--help-all`
+
+Examples
+--------
+
+    The simplest way to use nbconvert is
+    
+    > jupyter nbconvert mynotebook.ipynb
+    
+    which will convert mynotebook.ipynb to the default format (probably HTML).
+    
+    You can specify the export format with `--to`.
+    Options include ['custom', 'html', 'latex', 'markdown', 'notebook', 'pdf', 'python', 'rst', 'script', 'slides', 'html_ch', 'html_embed', 'html_toc', 'html_with_lenvs', 'html_with_toclenvs', 'latex_with_lenvs', 'selectLanguage']
+    
+    > jupyter nbconvert --to latex mynotebook.ipynb
+    
+    Both HTML and LaTeX support multiple output templates. LaTeX includes
+    'base', 'article' and 'report'.  HTML includes 'basic' and 'full'. You
+    can specify the flavor of the format used.
+    
+    > jupyter nbconvert --to html --template basic mynotebook.ipynb
+    
+    You can also pipe the output to stdout, rather than a file
+    
+    > jupyter nbconvert mynotebook.ipynb --stdout
+    
+    PDF is generated via latex
+    
+    > jupyter nbconvert mynotebook.ipynb --to pdf
+    
+    You can get (and serve) a Reveal.js-powered slideshow
+    
+    > jupyter nbconvert myslides.ipynb --to slides --post serve
+    
+    Multiple notebooks can be given at the command line in a couple of 
+    different ways:
+    
+    > jupyter nbconvert notebook*.ipynb
+    > jupyter nbconvert notebook1.ipynb notebook2.ipynb
+    
+    or you can specify the notebooks list in a config file, containing::
+    
+        c.NbConvertApp.notebooks = ["my_notebook.ipynb"]
+    
+    > jupyter nbconvert --config mycfg.py
+
+[NbConvertApp] Converting notebook ../results/54//notebooks/rates_early_vs_late.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/52//notebooks/rates_early_vs_late.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Writing 115062 bytes to ../results/54//notebooks/rates_early_vs_late.ipynb
+[NbConvertApp] Writing 113262 bytes to ../results/52//notebooks/rates_early_vs_late.ipynb
+[NbConvertApp] Converting notebook ../results/52/10062017/notebooks/rates.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/52/09212017/notebooks/rates.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/52/10052017/notebooks/rates.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/52/10042017/notebooks/rates.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/52/09262017/notebooks/rates.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/52/09272017/notebooks/rates.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/54/10042017/notebooks/rates.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/54/09212017/notebooks/rates.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/54/10032017/notebooks/rates.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/54/09262017/notebooks/rates.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/54/09222017/notebooks/rates.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/54/10022017/notebooks/rates.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Writing 47145 bytes to ../results/54/09262017/notebooks/rates.ipynb
+[NbConvertApp] Writing 47511 bytes to ../results/52/09212017/notebooks/rates.ipynb
+[NbConvertApp] Writing 49325 bytes to ../results/52/10052017/notebooks/rates.ipynb
+[NbConvertApp] Writing 47429 bytes to ../results/52/09272017/notebooks/rates.ipynb
+[NbConvertApp] Writing 49629 bytes to ../results/52/09262017/notebooks/rates.ipynb
+[NbConvertApp] Writing 50835 bytes to ../results/54/09222017/notebooks/rates.ipynb
+[NbConvertApp] Writing 49547 bytes to ../results/52/10042017/notebooks/rates.ipynb
+[NbConvertApp] Writing 54435 bytes to ../results/52/10062017/notebooks/rates.ipynb
+[NbConvertApp] Writing 51797 bytes to ../results/54/10032017/notebooks/rates.ipynb
+[NbConvertApp] Writing 48365 bytes to ../results/54/10022017/notebooks/rates.ipynb
+[NbConvertApp] Writing 50355 bytes to ../results/54/09212017/notebooks/rates.ipynb
+[NbConvertApp] Writing 46635 bytes to ../results/54/10042017/notebooks/rates.ipynb
+[NbConvertApp] Converting notebook ../results/dhpc4/10062017/notebooks/rates.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/dhpc4/09262017/notebooks/rates.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/dhpc4/09232017/notebooks/rates.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Writing 55921 bytes to ../results/dhpc4/09262017/notebooks/rates.ipynb
+[NbConvertApp] Writing 61510 bytes to ../results/dhpc4/09232017/notebooks/rates.ipynb
+[NbConvertApp] Writing 56526 bytes to ../results/dhpc4/10062017/notebooks/rates.ipynb
+[NbConvertApp] Converting notebook ../results/52//notebooks/rates_early_vs_late.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/54//notebooks/rates_early_vs_late.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Writing 133418 bytes to ../results/52//notebooks/rates_early_vs_late.ipynb
+[NbConvertApp] Writing 134638 bytes to ../results/54//notebooks/rates_early_vs_late.ipynb
+[NbConvertApp] Converting notebook ../results/dhpc4/09262017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/dhpc4/10062017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/dhpc4/09232017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/52/09212017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/52/09262017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/52/10042017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/52/09272017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/52/10062017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/52/10052017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/54/09222017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/54/09262017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/54/10032017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/54/09212017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/54/10042017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/54/10022017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Writing 16433 bytes to ../results/52/10052017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16438 bytes to ../results/52/09212017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16467 bytes to ../results/52/09262017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16450 bytes to ../results/54/09262017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16436 bytes to ../results/52/10062017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16466 bytes to ../results/54/09222017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16444 bytes to ../results/52/10042017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16438 bytes to ../results/52/09272017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16422 bytes to ../results/54/10032017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16450 bytes to ../results/54/10022017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16465 bytes to ../results/54/10042017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16466 bytes to ../results/dhpc4/09262017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16441 bytes to ../results/54/09212017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16688 bytes to ../results/dhpc4/09232017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16431 bytes to ../results/dhpc4/10062017/notebooks/preprocessing.ipynb
+[NbConvertApp] Converting notebook ../results/dhpc4/09232017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/dhpc4/09262017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/dhpc4/10062017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/52/10042017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/52/09272017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/52/10062017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/52/09262017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/52/10052017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/52/09212017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/54/10042017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/54/10032017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/54/09212017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/54/09222017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/54/10022017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/54/09262017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/52/10052017/notebooks/selectivity.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/52/10042017/notebooks/selectivity.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/dhpc4/09262017/notebooks/selectivity.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/dhpc4/10062017/notebooks/selectivity.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/52/09262017/notebooks/selectivity.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/dhpc4/09232017/notebooks/selectivity.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/54/09222017/notebooks/selectivity.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/54/10042017/notebooks/selectivity.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/52/09212017/notebooks/selectivity.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/54/10022017/notebooks/selectivity.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/52/09272017/notebooks/selectivity.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/54/10032017/notebooks/selectivity.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/52/10062017/notebooks/selectivity.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/54/09262017/notebooks/selectivity.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/54/09212017/notebooks/selectivity.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Writing 16787 bytes to ../results/52/09272017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16790 bytes to ../results/54/09212017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16782 bytes to ../results/52/10052017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16816 bytes to ../results/52/09262017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16799 bytes to ../results/54/10022017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 17009 bytes to ../results/54/10032017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16799 bytes to ../results/54/09262017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16793 bytes to ../results/52/10042017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16787 bytes to ../results/52/09212017/notebooks/preprocessing.ipynb
+[NbConvertApp] ERROR | Error while converting '../results/dhpc4/09232017/notebooks/selectivity.ipynb'
+Traceback (most recent call last):
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/nbconvertapp.py", line 357, in export_single_notebook
+    output, resources = self.exporter.from_filename(notebook_filename, resources=resources)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/exporters/exporter.py", line 165, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/exporters/exporter.py", line 183, in from_file
+    return self.from_notebook_node(nbformat.read(file_stream, as_version=4), resources=resources, **kw)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/exporters/notebook.py", line 26, in from_notebook_node
+    nb_copy, resources = super(NotebookExporter, self).from_notebook_node(nb, resources, **kw)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/exporters/exporter.py", line 130, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/exporters/exporter.py", line 302, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/preprocessors/base.py", line 47, in __call__
+    return self.preprocess(nb,resources)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/preprocessors/execute.py", line 145, in preprocess
+    nb, resources = super(ExecutePreprocessor, self).preprocess(nb, resources)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/preprocessors/base.py", line 70, in preprocess
+    nb.cells[index], resources = self.preprocess_cell(cell, resources, index)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/preprocessors/execute.py", line 176, in preprocess_cell
+    raise CellExecutionError(msg)
+CellExecutionError: An error occurred while executing the following cell:
+------------------
+folder = './autorestore/preprocessing/'
+for var in ('time_ax', 'events', 'cycles',
+            'CYCLE_START', 'DELAY',
+            'CS_START', 'CS_DURATION', 'CS_END',
+            'US_START', 'US_DURATION',
+            'first_reward_times',
+            'is_CSmt', 'is_errCSmt', 'is_corrCSmt', 'is_rewardt', 'is_shockt', 'is_airpufft',
+            'is_rewarded', 'is_not_rewarded', 'is_shocked', 'is_airpuffed'): 
+    exec('%s = ut.load_variable(\'%s\', folder=\'%s\')'%(var, var, folder))
+------------------
+
+IOError: [Errno 2] No such file or directory: './autorestore/preprocessing/first_reward_times'
+
+[NbConvertApp] ERROR | Error while converting '../results/52/10062017/notebooks/selectivity.ipynb'
+Traceback (most recent call last):
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/nbconvertapp.py", line 357, in export_single_notebook
+    output, resources = self.exporter.from_filename(notebook_filename, resources=resources)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/exporters/exporter.py", line 165, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/exporters/exporter.py", line 183, in from_file
+    return self.from_notebook_node(nbformat.read(file_stream, as_version=4), resources=resources, **kw)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/exporters/notebook.py", line 26, in from_notebook_node
+    nb_copy, resources = super(NotebookExporter, self).from_notebook_node(nb, resources, **kw)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/exporters/exporter.py", line 130, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/exporters/exporter.py", line 302, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/preprocessors/base.py", line 47, in __call__
+    return self.preprocess(nb,resources)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/preprocessors/execute.py", line 145, in preprocess
+    nb, resources = super(ExecutePreprocessor, self).preprocess(nb, resources)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/preprocessors/base.py", line 70, in preprocess
+    nb.cells[index], resources = self.preprocess_cell(cell, resources, index)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/preprocessors/execute.py", line 176, in preprocess_cell
+    raise CellExecutionError(msg)
+CellExecutionError: An error occurred while executing the following cell:
+------------------
+folder = './autorestore/preprocessing/'
+for var in ('time_ax', 'events', 'cycles',
+            'CYCLE_START', 'DELAY',
+            'CS_START', 'CS_DURATION', 'CS_END',
+            'US_START', 'US_DURATION',
+            'first_reward_times',
+            'is_CSmt', 'is_errCSmt', 'is_corrCSmt', 'is_rewardt', 'is_shockt', 'is_airpufft',
+            'is_rewarded', 'is_not_rewarded', 'is_shocked', 'is_airpuffed'): 
+    exec('%s = ut.load_variable(\'%s\', folder=\'%s\')'%(var, var, folder))
+------------------
+
+EOFError: 
+
+[NbConvertApp] Writing 16785 bytes to ../results/52/10062017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 74089 bytes to ../results/52/09272017/notebooks/selectivity.ipynb
+[NbConvertApp] Writing 78435 bytes to ../results/52/09262017/notebooks/selectivity.ipynb
+[NbConvertApp] Writing 78494 bytes to ../results/54/10022017/notebooks/selectivity.ipynb
+[NbConvertApp] Writing 17050 bytes to ../results/54/09222017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 78524 bytes to ../results/52/09212017/notebooks/selectivity.ipynb
+[NbConvertApp] Writing 78539 bytes to ../results/54/09222017/notebooks/selectivity.ipynb
+[NbConvertApp] Writing 16814 bytes to ../results/54/10042017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 78690 bytes to ../results/54/09212017/notebooks/selectivity.ipynb
+[NbConvertApp] Writing 78570 bytes to ../results/52/10042017/notebooks/selectivity.ipynb
+[NbConvertApp] Writing 78423 bytes to ../results/52/10052017/notebooks/selectivity.ipynb
+[NbConvertApp] Writing 78531 bytes to ../results/54/09262017/notebooks/selectivity.ipynb
+[NbConvertApp] Writing 78788 bytes to ../results/dhpc4/10062017/notebooks/selectivity.ipynb
+[NbConvertApp] Writing 17053 bytes to ../results/dhpc4/09262017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 78234 bytes to ../results/54/10032017/notebooks/selectivity.ipynb
+[NbConvertApp] Writing 17037 bytes to ../results/dhpc4/09232017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 78417 bytes to ../results/dhpc4/09262017/notebooks/selectivity.ipynb
+[NbConvertApp] Writing 78455 bytes to ../results/54/10042017/notebooks/selectivity.ipynb
+[NbConvertApp] Writing 16780 bytes to ../results/dhpc4/10062017/notebooks/preprocessing.ipynb
+[NbConvertApp] Converting notebook ../results/dhpc4/09262017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/dhpc4/09232017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/52/09212017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/dhpc4/10062017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/54/09262017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/52/10052017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/52/10062017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/52/09262017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/54/09212017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/52/09272017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/54/10042017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/54/10022017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/54/09222017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Converting notebook ../results/54/10032017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Converting notebook ../results/52/10042017/notebooks/preprocessing.ipynb to notebook
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+[NbConvertApp] Executing notebook with kernel: python2
+Traceback (most recent call last):
+  File "/home/fabios/anaconda2/bin/jupyter-nbconvert", line 6, in <module>
+    main()
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/jupyter_core/application.py", line 267, in launch_instance
+    return super(JupyterApp, cls).launch_instance(argv=argv, **kwargs)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/traitlets/config/application.py", line 653, in launch_instance
+    app.start()
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/nbconvertapp.py", line 293, in start
+    self.convert_notebooks()
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/nbconvertapp.py", line 457, in convert_notebooks
+    self.convert_single_notebook(notebook_filename)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/nbconvertapp.py", line 428, in convert_single_notebook
+    output, resources = self.export_single_notebook(notebook_filename, resources, input_buffer=input_buffer)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/nbconvertapp.py", line 357, in export_single_notebook
+    output, resources = self.exporter.from_filename(notebook_filename, resources=resources)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/exporters/exporter.py", line 165, in from_filename
+    return self.from_file(f, resources=resources, **kw)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/exporters/exporter.py", line 183, in from_file
+    return self.from_notebook_node(nbformat.read(file_stream, as_version=4), resources=resources, **kw)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/exporters/notebook.py", line 26, in from_notebook_node
+    nb_copy, resources = super(NotebookExporter, self).from_notebook_node(nb, resources, **kw)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/exporters/exporter.py", line 130, in from_notebook_node
+    nb_copy, resources = self._preprocess(nb_copy, resources)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/exporters/exporter.py", line 302, in _preprocess
+    nbc, resc = preprocessor(nbc, resc)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/preprocessors/base.py", line 47, in __call__
+    return self.preprocess(nb,resources)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/nbconvert/preprocessors/execute.py", line 141, in preprocess
+    cwd=path)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/jupyter_client/manager.py", line 433, in start_new_kernel
+    kc.wait_for_ready(timeout=startup_timeout)
+  File "/home/fabios/anaconda2/lib/python2.7/site-packages/jupyter_client/blocking/client.py", line 59, in wait_for_ready
+    raise RuntimeError('Kernel died before replying to kernel_info')
+RuntimeError: Kernel died before replying to kernel_info
+[NbConvertApp] Writing 16474 bytes to ../results/54/09222017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16606 bytes to ../results/54/09262017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16446 bytes to ../results/52/09272017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16449 bytes to ../results/54/09212017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16475 bytes to ../results/52/09262017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16684 bytes to ../results/52/09212017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16458 bytes to ../results/54/10022017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16444 bytes to ../results/52/10062017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16430 bytes to ../results/54/10032017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16473 bytes to ../results/54/10042017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16452 bytes to ../results/52/10042017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16474 bytes to ../results/dhpc4/09262017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16458 bytes to ../results/dhpc4/09232017/notebooks/preprocessing.ipynb
+[NbConvertApp] Writing 16439 bytes to ../results/dhpc4/10062017/notebooks/preprocessing.ipynb
