@@ -2,7 +2,7 @@
  
 Many notebooks call other notebooks, and all rely on variables defined in 'preprocessing' notebook. Python 2.7
 
-*JSB is currenlty working on a generalized preprocessing notebook that can be used for any of the datasets (eg, whether odor and sucrose/shock presentations were collected in separate or same session). TO DO: define first lick after reward delivery*
+*JSB is currenlty working on a generalized preprocessing notebook that can be used for any of the datasets (eg, whether odor and sucrose/shock presentations were collected in separate or same session). ADDITIONAL TO DO: deal with CellRegs adaptation*
    
 *C.txt* = denoised trace (the red trace)  
 *C_raw.txt* = raw trace (the blue trace)  
