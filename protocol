@@ -1,0 +1,42 @@
+2p valence protocol (2 consecutive days)
+ARDUINO SKETCH: valence_2p
+
+Odors: made fresh daily
+800ul Mineral oil + 
+300ul coyote urine or
+300ul female urine (pool urine from several (3+) females, approx 3-6 months old
+		Day 1 = 150ul urine collected previous day (kept in -20C) + 150ul freshly collected urine
+		Day 2 = use same odor vials
+15 pseudorandom alternating presentations of each
+
+Following odor presentations, there is a 2 min pause to remove nose cone and position lick spout
+
+Sucrose delivery: 10% sucrose, 0.3%NaCl
+	~2ul/delivery
+	30 presentations
+If reward is not collected in a timely manner, imaging cycle will cease and next trial will begin.
+
+Shocks
+	~0.3mA. However, actually amount delivered will depend on contact between electrode and tail
+	10 presentations
+
+Sound/air blasts
+	~75 dB white noise in conjunction with ~8 PSI airpuff to R eye/snout
+10 presentations
+
+
+This current iteration of the experiment differs from previous iteration (2018) in the following ways:
+Did not use “old” female urine previously
+40 sucrose deliveries were given
+Shock amplitude ostensibly = 0.5mA (but I suspect shock cuff was delivering less, hence the lower amplitude for this iteration, which has a better shock cuff that I believe delivers more current)
+No blasts were given (this is why they were tacked on at end of current iteration, so as to make the session exactly the same as previous version up until blasts section)
+Odor and sucrose/shock were captured during different imaging sessions
+Pre- and post-US imaging durations differed
+	
+
+If I were to do experiment over:
+Reduce odor presentations to 10 each (although should confirm that this is indeed ok, after analyzing data)
+Make odor concoction using only 200ul of mineral oil (think mineral oil suppresses urine, which sinks)
+Increase shock amplitude slightly  to .35mA
+Increase sucrose delivery to ~5ul each and decrease deliveries to only 20 (again, confirm after analysis)
+Probably would intersperse all stimuli, as I now know animals will still  lick after being shocked
