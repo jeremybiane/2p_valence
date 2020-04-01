@@ -1,5 +1,15 @@
 # 2p_valence
- 
+
+Stimuli presentations were in this order:
+Day1:
+30 odor trials (15 coyote, 15 female urine), pseudorandomly presented
+30 sucrose deliveries (40 for 2018 collective). Not all deliveries were necessarily consumed
+10 shock trials
+10 sound blasts (2020 collective only)
+
+Day2:
+same as Day1
+
 Many notebooks call other notebooks, and all rely on variables defined in 'preprocessing' notebook. Python 2.7
 
 *JSB is currenlty working on a generalized preprocessing notebook that can be used for any of the datasets (eg, whether odor and sucrose/shock presentations were collected in separate or same session). ADDITIONAL TO DO: deal with CellRegs adaptation*
